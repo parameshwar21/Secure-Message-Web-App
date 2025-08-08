@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Secure Messaging (Hybrid + Sign)</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Secure Messaging — Hybrid Encryption + Signatures</h1>
+
+    <section class="col">
+      <h2>Your Keys</h2>
+      <button id="generateKeysBtn">Generate Keys (RSA-OAEP + RSA-SIGN)</button>
+      <button id="exportPubBtn">Export My Public Keys (JWK)</button>
+      <div>
+        <label>My Public Encryption Key (JWK)</label>
+        <textarea id="myEncPub" rows="4" readonly></textarea>
+      </div>
+      <div>
+        <label>My Public Signing Key (JWK)</label>
+        <textarea id="mySignPub" rows="4" readonly></textarea>
+      </div>
+    </section>
+
+    <section class="col">
+      <h2>Friend's Keys</h2>
+      <label>Paste Friend's Public Encryption Key (JWK)</label>
+      <textarea id="friendEncPub" rows="4"></textarea>
+      <label>Paste Friend's Public Signing Key (JWK)</label>
+      <textarea id="friendSignPub" rows="4"></textarea>
+      <button id="importFriendBtn">Import Friend's Public Keys</button>
+    </section>
+
+    <section class="col">
+      <h2>Send Message</h2>
+      <label>Plaintext</label>
+      <textarea id="plaintext" rows="4"></textarea>
+      <button id="sendBtn">Encrypt + Sign (Create Payload)</button>
+      <label>Payload (send this JSON to friend)</label>
+      <textarea id="payloadOut" rows="8" readonly></textarea>
+    </section>
+
+    <section class="col">
+      <h2>Receive Message</h2>
+      <label>Paste Payload JSON</label>
+      <textarea id="payloadIn" rows="8"></textarea>
+      <button id="receiveBtn">Decrypt + Verify</button>
+      <div>
+        <label>Decrypted Plaintext</label>
+        <textarea id="decryptedOut" rows="4" readonly></textarea>
+      </div>
+      <div>
+        <label>Verification Status</label>
+        <input id="verifyStatus" readonly />
+      </div>
+    </section>
+
+    <small>Works in modern browsers (Chrome, Firefox, Edge). Use localhost server if needed.</small>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/keys.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
